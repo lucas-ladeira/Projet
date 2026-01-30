@@ -3,10 +3,11 @@ const multer = require('multer');
 const { v2: cloudinary } = require('cloudinary');
 const { v4: uuidv4 } = require('uuid');
 
+// Cloudinary configuration using environment variables
 cloudinary.config({
-  cloud_name: 'dv8n169be',
-  api_key: '514475761252266',
-  api_secret: 'jyhWvdkl9h6Jj5a8zvRLzyLtlxc',
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = multer.memoryStorage();
