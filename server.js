@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -9,7 +11,7 @@ const routerAdmin = require('./routes/Admin');
 const routerShop = require('./routes/Shop');
 
 const app = express();
-const port = 3010;
+const port = process.env.PORT || 3010;
 
 // Middleware pour parser les donnees de requetes POST
 app.use(express.json());
@@ -21,7 +23,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'Views'));
 app.use(methodOverride('_method'));
 app.use(session({
-  secret: 'yourSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -30,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Connexion à MongoDB
 const connectionMongo = async () => {
   try {
-    const connect = await mongoose.connect('mongodb+srv://lucas:1234@cluster0.8jdd2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&dbName=Panier');
+    const connect = await mongoose.connect(process.env.MONGO_URI);
     console.log(`Connected to MongoDB: ${connect.connection.host}`);
   } catch (error) {
     console.error('MongoDB connection error:', error.message);
