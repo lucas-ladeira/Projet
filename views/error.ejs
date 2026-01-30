@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head', { title: 'Error' }); %>
+
+  <body>
+    <%- include('../components/header', { role: 'error' }); %>
+      <div class="container mt-5">
+        <h1 class="text-danger">Error</h1>
+        <p>
+          <%= message %>
+        </p>
+        <a href="/" class="btn btn-primary">Back to Home</a>
+      </div>
+  </body>
+
+</html>

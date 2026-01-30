@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head', { title: 'Login' }); %>
+
+  <body>
+    <%- include('../components/header', { role: 'guest' }); %>
+
+      <div class="container d-flex justify-content-center align-items-center py-5 my-5" id="login-container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Login</h2>
+            <form action="/user/login" method="POST">
+              <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                  required>
+              </div>
+              <button type="submit" class="btn btn-primary mt-1">Login</button>
+            </form>
+
+            <% if (error) { %>
+              <div class="alert alert-danger mt-3">
+                <%= error %>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+  </body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head', { title: 'Register' }); %>
+
+  </head>
+
+  <body>
+    <%- include('../components/header', { role: 'guest' }); %>
+
+      <div class="container d-flex justify-content-center align-items-center py-5 my-5" id="register-container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Register</h2>
+            <form action="/user/register" method="post">
+              <div class="form-group mb-3">
+                <label for="name">Username</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Username" required>
+              </div>
+              <div class="form-group mb-3">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+              </div>
+              <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                  required>
+              </div>
+              <button type="submit" class="btn btn-primary mt-2">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+  </body>
+
+</html>

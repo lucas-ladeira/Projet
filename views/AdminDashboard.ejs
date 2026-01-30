@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head', { title: 'Admin Dashboard' }); %>
+
+  <body>
+    <%- include('../components/header', { role: 'admin' }); %>
+
+      <div class="container justify-content-center align-items-center" id="dashboard-container">
+        <h1 class="mt-5 mb-2">Admin Dashboard</h1>
+        <div class="row">
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Users</h5>
+                <p class="card-text">
+                  Total Users: <%= users.length %>
+                </p>
+                <a href="/admin/users" class="btn btn-primary">Manage Users</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Products</h5>
+                <p class="card-text">
+                  Total Products: <%= products.length %>
+                </p>
+                <a href="/admin/products" class="btn btn-primary">Manage Products</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button onclick="myFunction()">click me</button>
+      <button onclick="increaseProduct('1')">click me to increase</button>
+
+  </body>
+
+  <script>
+    function myFunction() {
+      localStorage.setItem("cart", JSON.stringify([
+        {
+          "id": "1",
+          "name": "product1",
+          "price": 100,
+          "quantity": 1
+        }
+      ]));
+      // localStorage.clear();
+    }
+
+    function increaseProduct(id) {
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      let product = cart.find(product => product.id === id);
+      if (product) {
+        product.quantity++;
+      } else {
+        console.error("Product not found in cart");
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  </script>
+
+</html>

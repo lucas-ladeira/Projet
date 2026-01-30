@@ -1,0 +1,35 @@
+<header class="d-flex flex-wrap align-items-center justify-content-between px-3 py-1 mb-4 border-bottom bg-dark w-100">
+  <div class="col-md-3 mb-2 mb-md-1">
+    <a href="/" class="align-middle d-inline-flex link-body-emphasis text-decoration-none text-white">
+      <% if (role==='admin' ) { %>
+        <img src="/img/adminLogo.png" alt="AdminLogo" class="img-fluid d-block" id="imgAdminLogo">
+        <% } else { %>
+          <img src="/img/Logo.png" alt="Logo" class="img-fluid d-block" id="imgLogo">
+          <% } %>
+    </a>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container d-flex justify-content-center">
+      <% if (role==='admin' ) { %>
+        <a class="navbar-brand px-2" href="/admin">Dashboard</a>
+        <a class="navbar-brand px-2" href="/admin/users">User Management</a>
+        <a class="navbar-brand px-2" href="/admin/products">Product Management</a>
+        <% } else if(role==='user' ) { %>
+          <a class="navbar-brand px-2" href="/shop/products">Products</a>
+          <a class="navbar-brand px-2" href="/shop/cart">Cart</a>
+          <a class="navbar-brand px-2" href="/shop/checkout">Checkout</a>
+          <% } %>
+    </div>
+  </nav>
+
+  <div class="col-md-3 text-end">
+    <% if (role==='guest' ) { %>
+      <a href="/" class="navbar-brand px-3 text-white align-middle"><bi class="bi-house-door"> </bi> Home</a>
+      <a href="/user/login" class="btn btn-outline-light me-2 align-middle">Login</a>
+      <a href="/user/register" class="btn btn-warning align-middle">Register</a>
+      <% } else { %>
+        <a href="/user/logout" class="btn btn-outline-light me-2 align-middle">Logout</a>
+        <% } %>
+  </div>
+</header>
